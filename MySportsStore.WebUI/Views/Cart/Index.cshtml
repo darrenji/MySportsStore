@@ -1,0 +1,47 @@
+﻿@model MySportsStore.WebUI.Models.CartIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table width="50%" align="left">
+    <thead>
+        <tr>
+            <th align="left">产品名称</th>
+            <th align="center">数量</th>          
+            <th align="right">单价</th>
+            <th align="right">小计</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td align="left">@line.Product.Name</td>
+                <td align="center">@line.Quantity</td>
+                <td align="right">@line.Product.Price.ToString("c")</td>
+                <td align="right">@((line.Quantity * line.Product.Price).ToString("c"))</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    {
+                        @Html.Hidden("Id", line.Product.Id)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="移除"/>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="right">总计：</td>
+            <td align="right">@Model.Cart.ComputeTotalValue().ToString("c")</td>
+        </tr>
+    </tfoot>
+</table>
+<p align="left" class="actionButtons" style="width: 100%;clear: both">
+    <a href="@Model.ReturnUrl">继续购物</a>
+    @Html.ActionLink("结账","CheckOut")
+</p>

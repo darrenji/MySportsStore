@@ -1,0 +1,16 @@
+﻿@model MySportsStore.WebUI.Models.Cart
+
+@{
+    Layout = null;
+}
+
+<div id="cart">
+    <span class="caption">
+        <b>购物车明细：</b>
+        @Model.Lines.Sum(x => x.Quantity) 件,
+        @Model.ComputeTotalValue().ToString("c")
+    </span>
+    
+    @Html.ActionLink("结算", "Index", "Cart", new {returnUrl = Request.Url.PathAndQuery}, null)
+</div>
+

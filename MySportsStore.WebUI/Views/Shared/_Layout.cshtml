@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+</head>
+    <body>
+        <div id="header" style="height: 200px;">
+             @{Html.RenderAction("Summary", "Cart");}
+            <div class="title">体育用品商店</div>
+        </div>
+        <div id="categories">
+            @{Html.RenderAction("Menu","Nav");}
+        </div>
+        <div id="content">
+            @RenderBody()
+        </div>
+       
+        @Scripts.Render("~/bundles/jquery")
+        @RenderSection("scripts", required: false)
+    </body>
+</html>

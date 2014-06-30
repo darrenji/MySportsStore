@@ -1,0 +1,23 @@
+﻿@model MySportsStore.Model.ShippingDetail
+
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>填写地址等信息</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(m => m.Name)
+    @Html.EditorFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    <br/><br/>
+    @Html.LabelFor(m => m.Line)
+    @Html.EditorFor(m => m.Line)
+    @Html.ValidationMessageFor(m => m.Line)
+
+    <p align="center">
+        <input class="actionButtons" type="submit" value="提交订单"/>
+    </p>
+}
