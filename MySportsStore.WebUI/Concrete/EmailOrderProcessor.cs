@@ -49,7 +49,7 @@ namespace MySportsStore.WebUI.Concrete
             mailMsg.Body = body.ToString();
             mailMsg.IsBodyHtml = true;
             SmtpClient smtpClient = new SmtpClient("smtp.sina.com");
-            smtpClient.Credentials = new NetworkCredential("qdjjx9441", "781222");
+            smtpClient.Credentials = new NetworkCredential("yourusername", "yourpassword");
 
             //if (emailSettings.WriteAsFile)
             //{
